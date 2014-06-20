@@ -548,8 +548,7 @@ namespace AspNet.Identity.MongoDb
 
         public Task<TUser> FindByEmailAsync(string email)
         {
-            ThrowIfDisposed();
-
+            ThrowIfDisposed(); 
             TUser user = db.GetCollection<TUser>(collectionName).FindOne((Query.EQ("Email", email)));
             return Task.FromResult(user);
         }
@@ -567,7 +566,11 @@ namespace AspNet.Identity.MongoDb
 
         public Task<bool> GetEmailConfirmedAsync(TUser user)
         {
-            throw new NotImplementedException();
+            ThrowIfDisposed();
+            if (user == null)
+                throw new ArgumentNullException("user");
+
+            return Task.FromResult(user.EmailConfirmed);
         }
 
         public Task SetEmailAsync(TUser user, string email)

@@ -25,8 +25,12 @@ namespace AspNet.Identity.MongoDb
         /// <value>The name of the user.</value>
 		public virtual string UserName { get; set; }
 
-
+        
         public virtual string Email { get; set; }
+        public virtual bool EmailConfirmed { get; set; }
+
+        
+
 
         /// <summary>
         /// Gets or sets the password hash.

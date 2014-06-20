@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Net.Mail;
+using System.Threading.Tasks;
 using AspNet.Identity.MongoDb;
 using Microsoft.AspNet.Identity; 
 using Microsoft.AspNet.Identity.Owin;
@@ -59,9 +60,25 @@ namespace SecurityGuard.Web
     public class EmailService : IIdentityMessageService
     {
         public Task SendAsync(IdentityMessage message)
-        {
-            // Plug in your email service here to send an email.
-            return Task.FromResult(0);
+        { 
+
+            // convert IdentityMessage to a MailMessage
+            var email =
+               new MailMessage(new MailAddress("noreply@mydomain.com", "(do not reply)"),
+               new MailAddress(message.Destination))
+               {
+                   Subject = message.Subject,
+                   Body = message.Body,
+                   IsBodyHtml = true
+               };
+
+            using (var client = new SmtpClient()) // SmtpClient configuration comes from config file
+            {
+                client.UseDefaultCredentials = true; 
+
+                return client.SendMailAsync(email);
+            }
+
         }
     }
 
