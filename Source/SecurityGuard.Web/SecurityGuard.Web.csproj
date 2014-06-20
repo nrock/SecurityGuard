@@ -221,6 +221,12 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AspNet.Identity.MongoDb\AspNet.Identity.MongoDb.csproj">
+      <Project>{4ce896bf-e5a3-43dc-8772-0998e43065a7}</Project>
+      <Name>AspNet.Identity.MongoDb</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
