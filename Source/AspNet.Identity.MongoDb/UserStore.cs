@@ -16,7 +16,7 @@ namespace AspNet.Identity.MongoDb
     /// </summary>
     /// <typeparam name="TUser">The type of the t user.</typeparam>
     public class UserStore<TUser> : IUserLoginStore<TUser>, IUserClaimStore<TUser>, IUserRoleStore<TUser>,
-        IUserPasswordStore<TUser>, IUserSecurityStampStore<TUser>, IUserStore<TUser>, IUserEmailStore<TUser> 
+        IUserPasswordStore<TUser>, IUserSecurityStampStore<TUser>, IUserStore<TUser>, IUserEmailStore<TUser> ,   IQueryableUserStore<TUser>
         where TUser : IdentityUser
     {
         #region Private Methods & Variables
@@ -578,6 +578,17 @@ namespace AspNet.Identity.MongoDb
         public Task SetEmailConfirmedAsync(TUser user, bool confirmed)
         {
             throw new NotImplementedException();
+        }
+         
+
+        IQueryable<TUser> IQueryableUserStore<TUser, string>.Users
+        {
+            get
+            {
+                IQueryable<TUser> users = db.GetCollection<TUser>(collectionName).FindAll().AsQueryable<TUser>();
+                return users;
+
+            }
         }
     }
 }

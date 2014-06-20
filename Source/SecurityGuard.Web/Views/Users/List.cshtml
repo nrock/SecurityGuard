@@ -1,0 +1,46 @@
+﻿
+@model  IList<SecurityGuard.Web.Controllers.UserViewModel> 
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>Users</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            Username
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            Roles
+        </th> 
+        <th></th>
+    </tr>
+
+    @foreach (var u in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => u.Username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => u.Email)
+            </td>
+            <td>
+                <small>@String.Join(" , ", u.Roles)</small>
+            </td> 
+            <td>  
+                @Html.ActionLink("Delete", "Delete", new { id = u.Username })
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+
+ 

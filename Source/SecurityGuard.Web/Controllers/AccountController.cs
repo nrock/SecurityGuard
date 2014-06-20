@@ -15,29 +15,8 @@ using SecurityGuard.Web.Models;
 namespace SecurityGuard.Web.Controllers
 {
     [Authorize]
-    public class AccountController : Controller
+    public class AccountController : AccountBaseController
     {
-        private ApplicationUserManager _userManager;
-
-        public AccountController()
-        {
-        }
-
-        public AccountController(ApplicationUserManager userManager)
-        {
-            UserManager = userManager;
-        }
-
-        public ApplicationUserManager UserManager {
-            get
-            {
-                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            }
-            private set
-            {
-                _userManager = value;
-            }
-        }
 
         //
         // GET: /Account/Login
