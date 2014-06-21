@@ -16,7 +16,8 @@ namespace AspNet.Identity.MongoDb
     /// </summary>
     /// <typeparam name="TUser">The type of the t user.</typeparam>
     public class UserStore<TUser> : IUserLoginStore<TUser>, IUserClaimStore<TUser>, IUserRoleStore<TUser>,
-        IUserPasswordStore<TUser>, IUserSecurityStampStore<TUser>, IUserStore<TUser>, IUserEmailStore<TUser> ,   IQueryableUserStore<TUser>
+        IUserPasswordStore<TUser>, IUserSecurityStampStore<TUser>, IUserStore<TUser>, IUserEmailStore<TUser>, 
+        IUserLockoutStore<TUser, string>, IQueryableUserStore<TUser>
         where TUser : IdentityUser
     {
         #region Private Methods & Variables
@@ -598,6 +599,59 @@ namespace AspNet.Identity.MongoDb
                 return users;
 
             }
+        }
+
+        public Task<int> GetAccessFailedCountAsync(TUser user)
+        {
+            ThrowIfDisposed();
+            if (user == null) throw new ArgumentNullException("user");
+            return Task.FromResult(user.AccessFailedCount);
+        }
+
+        public Task<bool> GetLockoutEnabledAsync(TUser user)
+        {
+            ThrowIfDisposed();
+            if (user == null) throw new ArgumentNullException("user");
+            return Task.FromResult(user.LockoutEnabled);
+        }
+
+        public Task<DateTimeOffset> GetLockoutEndDateAsync(TUser user)
+        {
+            ThrowIfDisposed();
+            if (user == null)   throw new ArgumentNullException("user");
+            return Task.FromResult(user.LockoutEndDate);
+        }
+
+        public Task<int> IncrementAccessFailedCountAsync(TUser user)
+        {
+            ThrowIfDisposed();
+            if (user == null) throw new ArgumentNullException("user");
+            user.AccessFailedCount++;
+            return Task.FromResult(user.AccessFailedCount);
+        }
+
+        public Task ResetAccessFailedCountAsync(TUser user)
+        {
+            ThrowIfDisposed();
+            if (user == null) throw new ArgumentNullException("user");
+            user.AccessFailedCount = 0;
+            return Task.FromResult(0);
+        }
+
+        public Task SetLockoutEnabledAsync(TUser user, bool enabled)
+        {
+            ThrowIfDisposed();
+            if (user == null) throw new ArgumentNullException("user");
+            user.LockoutEnabled = enabled;
+            return Task.FromResult(0);
+        }
+
+        public Task SetLockoutEndDateAsync(TUser user, DateTimeOffset lockoutEnd)
+        {
+            ThrowIfDisposed();
+            if (user == null) throw new ArgumentNullException("user");
+            user.LockoutEndDate = lockoutEnd;
+            return Task.FromResult(0);
         }
     }
 }

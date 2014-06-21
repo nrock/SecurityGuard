@@ -39,11 +39,21 @@ namespace SecurityGuard.Web.Controllers
                 var user = await UserManager.FindAsync(model.Email, model.Password);
                 if (user != null)
                 {
+                    //await UserManager.ResetAccessFailedCountAsync(user); 
                     await SignInAsync(user, model.RememberMe);
                     return RedirectToLocal(returnUrl);
                 }
                 else
                 {
+                    //user = await UserManager.Find(model.Email );
+                    //if (user != null)
+                    //{
+                    //    await UserManager.IncrementAccessFailedCountAsync(user); 
+                    //    if (UserManager.GetAccessFailedCountAsync(user)>3)
+                    //{
+                    //    async UserManager.SetLockoutEnabledAsync(user, true);
+                    //}
+                    //}
                     ModelState.AddModelError("", "Invalid username or password.");
                 }
             }

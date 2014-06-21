@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Identity;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using System;
 
 
 namespace AspNet.Identity.MongoDb
@@ -24,10 +25,24 @@ namespace AspNet.Identity.MongoDb
         /// </summary>
         /// <value>The name of the user.</value>
 		public virtual string UserName { get; set; }
-
-        
+         
+        /// <summary>
+        /// the email for the user
+        /// </summary>
         public virtual string Email { get; set; }
+
+        /// <summary>
+        /// the email has been confirmed by clicking a link to the site
+        /// </summary>
         public virtual bool EmailConfirmed { get; set; }
+        
+        public virtual bool LockoutEnabled { get; set; }
+        
+        public virtual int AccessFailedCount { get; set; }
+
+        public virtual DateTimeOffset LockoutEndDate { get; set; }
+         
+
 
         
 
