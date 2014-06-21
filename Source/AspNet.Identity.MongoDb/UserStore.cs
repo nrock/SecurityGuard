@@ -575,12 +575,18 @@ namespace AspNet.Identity.MongoDb
 
         public Task SetEmailAsync(TUser user, string email)
         {
-            throw new NotImplementedException();
+            ThrowIfDisposed();
+            if (user == null) throw new ArgumentNullException("user");
+            user.Email = email;
+            return Task.FromResult(0); 
         }
 
         public Task SetEmailConfirmedAsync(TUser user, bool confirmed)
-        {
-            throw new NotImplementedException();
+        {  
+            ThrowIfDisposed();
+            if (user == null) throw new ArgumentNullException("user");
+            user.EmailConfirmed = confirmed;
+            return Task.FromResult(0); 
         }
          
 

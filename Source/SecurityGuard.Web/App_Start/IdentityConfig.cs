@@ -75,9 +75,9 @@ namespace SecurityGuard.Web
             var client = new SmtpClient("smtp.gmail.com", 587);  
             client.SendCompleted += (s, e) =>
             {
-                client.Dispose();
+                client.Dispose();       
             };
-            client.Credentials = new NetworkCredential("xxxx@gmail.com", "password");
+            client.Credentials = new NetworkCredential("xxxxxxx@gmail.com", "xxxxxxxxxx");
             client.EnableSsl = true; 
             return client.SendMailAsync(email); 
         }
