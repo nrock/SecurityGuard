@@ -5,6 +5,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using SecurityGuard.Web.Models;
+using System.Net;
 
 namespace SecurityGuard.Web
 {
@@ -60,7 +61,7 @@ namespace SecurityGuard.Web
     public class EmailService : IIdentityMessageService
     {
         public Task SendAsync(IdentityMessage message)
-        { 
+        {
 
             // convert IdentityMessage to a MailMessage
             var email =
@@ -70,15 +71,15 @@ namespace SecurityGuard.Web
                    Subject = message.Subject,
                    Body = message.Body,
                    IsBodyHtml = true
-               };
-
-            using (var client = new SmtpClient()) // SmtpClient configuration comes from config file
+               };  
+            var client = new SmtpClient("smtp.gmail.com", 587);  
+            client.SendCompleted += (s, e) =>
             {
-                client.UseDefaultCredentials = true; 
-
-                return client.SendMailAsync(email);
-            }
-
+                client.Dispose();
+            };
+            client.Credentials = new NetworkCredential("xxxx@gmail.com", "password");
+            client.EnableSsl = true; 
+            return client.SendMailAsync(email); 
         }
     }
 
