@@ -92,7 +92,7 @@ namespace AspNet.Identity.MongoDb
         ///     Initializes a new instance of the <see cref="UserStore{TUser}" /> class. Uses DefaultConnection name if none was
         ///     specified.
         /// </summary>
-        public UserStore() : this("DefaultConnection")
+        public UserStore() : this("MONGOHQ_URL")
         {
         }
 
@@ -109,8 +109,16 @@ namespace AspNet.Identity.MongoDb
             }
             else
             {
-                string connStringFromManager =
-                    ConfigurationManager.ConnectionStrings[connectionNameOrUrl].ConnectionString;
+                string connStringFromManager = string.Empty;
+                if (ConfigurationManager.ConnectionStrings[connectionNameOrUrl] != null)
+                {
+                    connStringFromManager = ConfigurationManager.ConnectionStrings[connectionNameOrUrl].ConnectionString;
+                }
+                else if (ConfigurationManager.AppSettings[connectionNameOrUrl] != null)
+                {
+                    connStringFromManager = ConfigurationManager.AppSettings[connectionNameOrUrl];
+                }
+
                 if (connStringFromManager.ToLower().StartsWith("mongodb://"))
                 {
                     db = GetDatabaseFromUrl(new MongoUrl(connStringFromManager));
