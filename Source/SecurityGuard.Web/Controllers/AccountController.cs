@@ -37,7 +37,7 @@ namespace SecurityGuard.Web.Controllers
             if (ModelState.IsValid)
             {
                 var user = await UserManager.FindAsync(model.Email, model.Password);
-                if (user != null)
+                if (user != null && !user.LockoutEnabled)
                 {
                     //await UserManager.ResetAccessFailedCountAsync(user); 
                     await SignInAsync(user, model.RememberMe);
@@ -51,7 +51,7 @@ namespace SecurityGuard.Web.Controllers
                     //    await UserManager.IncrementAccessFailedCountAsync(user); 
                     //    if (UserManager.GetAccessFailedCountAsync(user)>3)
                     //{
-                    //    async UserManager.SetLockoutEnabledAsync(user, true);
+                    //    async UserManager.SetLockoutEnabledAsync(user, true);l
                     //}
                     //}
                     ModelState.AddModelError("", "Invalid username or password.");
