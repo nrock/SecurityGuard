@@ -1,4 +1,5 @@
-﻿using System.Net.Mail;
+﻿using System;
+using System.Net.Mail;
 using System.Threading.Tasks;
 using AspNet.Identity.MongoDb;
 using Microsoft.AspNet.Identity; 
@@ -62,24 +63,26 @@ namespace SecurityGuard.Web
     {
         public Task SendAsync(IdentityMessage message)
         {
+            System.Diagnostics.Debug.WriteLine(string.Format("body:{0}  Subject:{1}", message.Body, message.Subject));
+            return Task.FromResult(0);
 
             // convert IdentityMessage to a MailMessage
-            var email =
-               new MailMessage(new MailAddress("noreply@mydomain.com", "(do not reply)"),
-               new MailAddress(message.Destination))
-               {
-                   Subject = message.Subject,
-                   Body = message.Body,
-                   IsBodyHtml = true
-               };  
-            var client = new SmtpClient("smtp.gmail.com", 587);  
-            client.SendCompleted += (s, e) =>
-            {
-                client.Dispose();       
-            };
-            client.Credentials = new NetworkCredential("xxxxxxx@gmail.com", "xxxxxxxxxx");
-            client.EnableSsl = true; 
-            return client.SendMailAsync(email); 
+            //var email =
+            //   new MailMessage(new MailAddress("noreply@mydomain.com", "(do not reply)"),
+            //   new MailAddress(message.Destination))
+            //   {
+            //       Subject = message.Subject,
+            //       Body = message.Body,
+            //       IsBodyHtml = true
+            //   };  
+            //var client = new SmtpClient("smtp.gmail.com", 587);  
+            //client.SendCompleted += (s, e) =>
+            //{
+            //    client.Dispose();       
+            //};
+            //client.Credentials = new NetworkCredential("xxxxxxx@gmail.com", "xxxxxxxxxx");
+            //client.EnableSsl = true; 
+            //return client.SendMailAsync(email); 
         }
     }
 
