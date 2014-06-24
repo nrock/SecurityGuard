@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecurityGuard.Web", "Securi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNet.Identity.MongoDb", "AspNet.Identity.MongoDb\AspNet.Identity.MongoDb.csproj", "{4CE896BF-E5A3-43DC-8772-0998E43065A7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNet.Identity.NHibernate", "AspNet.Identity.NHibernate\AspNet.Identity.NHibernate.csproj", "{DCBCA6BC-4E94-4F8F-A9BB-C28E8C42DCB9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{4CE896BF-E5A3-43DC-8772-0998E43065A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4CE896BF-E5A3-43DC-8772-0998E43065A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4CE896BF-E5A3-43DC-8772-0998E43065A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCBCA6BC-4E94-4F8F-A9BB-C28E8C42DCB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCBCA6BC-4E94-4F8F-A9BB-C28E8C42DCB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCBCA6BC-4E94-4F8F-A9BB-C28E8C42DCB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCBCA6BC-4E94-4F8F-A9BB-C28E8C42DCB9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
