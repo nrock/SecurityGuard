@@ -45,14 +45,13 @@ namespace SecurityGuard.Web.Controllers
                 }
                 else
                 {
-                    //user = await UserManager.Find(model.Email );
+                    //user = await UserManager.FindByNameAsync(model.Email);
                     //if (user != null)
-                    //{
-                    //    await UserManager.IncrementAccessFailedCountAsync(user); 
-                    //    if (UserManager.GetAccessFailedCountAsync(user)>3)
-                    //{
-                    //    async UserManager.SetLockoutEnabledAsync(user, true);l
-                    //}
+                    //{ 
+                    //    if (await UserManager.IncrementAccessFailedCountAsync(user)>3)
+                    //    {
+                    //        async UserManager.SetLockoutEnabledAsync(user, true);
+                    //    }
                     //}
                     ModelState.AddModelError("", "Invalid username or password.");
                 }
