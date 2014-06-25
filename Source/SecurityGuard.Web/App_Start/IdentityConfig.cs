@@ -2,6 +2,7 @@
 using System.Net.Mail;
 using System.Threading.Tasks;
 using AspNet.Identity.MongoDb;
+using AspNet.Identity.NHibernate;
 using Microsoft.AspNet.Identity; 
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
@@ -14,8 +15,7 @@ namespace SecurityGuard.Web
 
     public class ApplicationUserManager : UserManager<ApplicationUser>
     {
-        public ApplicationUserManager(IUserStore<ApplicationUser> store)
-            : base(store)
+        public ApplicationUserManager(IUserStore<ApplicationUser> store) : base(store)
         {
         }
 
