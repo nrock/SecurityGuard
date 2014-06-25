@@ -4,7 +4,8 @@ using System.Configuration;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Microsoft.AspNet.Identity; 
+using Microsoft.AspNet.Identity;
+using NHibernate.Linq;
 
 namespace AspNet.Identity.NHibernate
 {
@@ -13,9 +14,28 @@ namespace AspNet.Identity.NHibernate
     /// </summary>
     /// <typeparam name="TUser">The type of the t user.</typeparam>
     public class UserStore<TUser> : IUserLoginStore<TUser>, IUserClaimStore<TUser>, IUserRoleStore<TUser>,
-        IUserPasswordStore<TUser>, IUserSecurityStampStore<TUser>, IUserStore<TUser>, IUserEmailStore<TUser> 
+        IUserPasswordStore<TUser>, IUserSecurityStampStore<TUser>, IUserStore<TUser>, IUserEmailStore<TUser> , IQueryableUserStore<TUser> 
         where TUser : IdentityUser
     {
+
+        IQueryable<TUser> IQueryableUserStore<TUser, string>.Users
+        {
+            get
+            {
+                var users = new List<TUser>();
+                //users.Add(new TUser { Email = "a@a.com", UserName = "a" });
+                //users.Add(new TUser { Email = "a@a.com", UserName = "a" });
+                //users.Add(new TUser { Email = "a@a.com", UserName = "a" });
+                var user = new IdentityUser();
+                user.Email = "a@a.com";
+                user.UserName = "a";
+                users.Add(user.As<TUser>());
+
+                return users.AsQueryable<TUser>();
+
+            }
+        }
+
         #region Private Methods & Variables
          
         /// <summary>
