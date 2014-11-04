@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30324.0
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecurityGuard.Web", "SecurityGuard.Web\SecurityGuard.Web.csproj", "{33D1447C-5A9D-47F5-A6F8-78C55F7D3A59}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecurityGuard.Business", "SecurityGuard.Business\SecurityGuard.Business.csproj", "{86080B91-BED8-448C-A4FE-5CA0C975F203}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecurityGuard.Enities", "SecurityGuard.Enities\SecurityGuard.Enities.csproj", "{F688BE50-CE44-419A-9ECB-3BD7DDEFC09B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecurityGuard.Data.IntegrationTest", "SecurityGuard.Data.IntegrationTest\SecurityGuard.Data.IntegrationTest.csproj", "{8BFA5D4C-032E-411B-92A5-D1B5FD3752E0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{F688BE50-CE44-419A-9ECB-3BD7DDEFC09B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F688BE50-CE44-419A-9ECB-3BD7DDEFC09B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F688BE50-CE44-419A-9ECB-3BD7DDEFC09B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BFA5D4C-032E-411B-92A5-D1B5FD3752E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BFA5D4C-032E-411B-92A5-D1B5FD3752E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BFA5D4C-032E-411B-92A5-D1B5FD3752E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BFA5D4C-032E-411B-92A5-D1B5FD3752E0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
