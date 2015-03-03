@@ -30,8 +30,8 @@ namespace SecurityGuard.Web.Controllers
 
 
 
-        [HttpPost]
-        [AllowAnonymous]
+        [HttpPost] 
+        [Authorize(Roles="members", "admin")] 
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Index(UserViewModel userViewModel)
         {
