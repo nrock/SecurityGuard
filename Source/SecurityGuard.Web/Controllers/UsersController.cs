@@ -10,6 +10,7 @@ using SecurityGuard.Web.Models;
 
 namespace SecurityGuard.Web.Controllers
 {
+    [Authorize(Roles = "Administrators")]
     public class UsersController : AccountBaseController
     { 
         public async Task<ActionResult> Index(string username) 
@@ -30,8 +31,7 @@ namespace SecurityGuard.Web.Controllers
 
 
 
-        [HttpPost] 
-        [Authorize(Roles="members", "admin")] 
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Index(UserViewModel userViewModel)
         {
