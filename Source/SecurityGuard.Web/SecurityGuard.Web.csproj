@@ -152,11 +152,13 @@
     <Compile Include="Controllers\AccountBaseController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\StatusController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\HealthViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -170,6 +172,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="App.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -214,6 +217,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Users\List.cshtml" />
+    <Content Include="Views\Status\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -230,6 +234,10 @@
     <ProjectReference Include="..\AspNet.Identity.MongoDb\AspNet.Identity.MongoDb.csproj">
       <Project>{4ce896bf-e5a3-43dc-8772-0998e43065a7}</Project>
       <Name>AspNet.Identity.MongoDb</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SecurityGuard.Business\SecurityGuard.Business.csproj">
+      <Project>{86080B91-BED8-448C-A4FE-5CA0C975F203}</Project>
+      <Name>SecurityGuard.Business</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

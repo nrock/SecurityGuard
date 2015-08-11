@@ -21,7 +21,8 @@ namespace SecurityGuard.Web.Controllers
             var viewModel = new UserViewModel
             {
                 Username = user.UserName,
-                Email =  user.Email,
+                Email = user.Email,
+                Roles = user.Roles,
                 LockedOut = user.LockoutEnabled,
                 LockedOutEndDate = user.LockoutEndDate
             };

@@ -1,0 +1,132 @@
+﻿
+@{
+    ViewBag.Title = "Status";
+}
+
+<h2>Status</h2>
+
+
+
+<div class="row statusView">
+    <div class="col-md-12">
+        <section>
+
+            @{
+                var status = "Something is wrong";
+                var panelClass = "panel-danger";
+                if (Model.Status)
+                {
+                    status = "Everything seems to be working correctly";
+                    panelClass = "panel-success";
+
+                }
+            }
+            <div class="panel @panelClass">
+                <div class="panel-heading">
+                    <h3 class="panel-title">@status</h3>
+                </div>
+
+                <div class="panel-body">
+
+                    <div class="row">
+                        <div class="col-md-10  col-md-offset-1">
+                            <div>
+
+                                @{
+                                    var panelStatus = string.Empty;
+                                    var dbStatus = string.Empty;
+
+                                    if (Model.IsDatabaseAlive)
+                                    {
+                                        panelStatus = "panel-success";
+                                        dbStatus = "Up";
+                                    }
+                                    else
+                                    {
+                                        panelStatus = "panel-danger";
+                                        dbStatus = "Down";
+                                    }
+                                }
+
+
+                                <div class="panel @panelStatus">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">Database Connectivity</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        @dbStatus
+                                    </div>
+                                </div>
+
+
+
+                                @{
+                                    panelStatus = string.Empty;
+                                    var certStatus = string.Empty;
+
+                                    if (Model.IsCertificateValid)
+                                    {
+                                        panelStatus = "panel-success";
+                                        certStatus = "Valid";
+                                    }
+                                    else
+                                    {
+                                        panelStatus = "panel-danger";
+                                        certStatus = "Expired";
+                                    }
+
+                                }
+
+                                <div class="panel @panelStatus">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">SSL Certificate Status</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        @certStatus
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="panel panel-success">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Website Connectivity</h3>
+                                </div>
+                                <div class="panel-body">
+                                    Up
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<h2>Information</h2>
+<div class="row">
+
+    <div class="col-md-12">
+        <section>
+
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Current Web Server</h3>
+                </div>
+                <div class="panel-body">
+                    @Model.WebServerName
+                </div>
+                <div class="panel-body">
+                    @string.Format("{0} days {1} hours {2} minutes", Model.CampaignClose.Days, Model.CampaignClose.Hours, Model.CampaignClose.Minutes)
+                </div>
+            </div>
+        </section>
+
+    </div>
+</div>
+
+
+
+
