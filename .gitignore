@@ -213,4 +213,4 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
-Source/SecurityGuard.Web/App.config
+Source/SecurityGuard.Web/App.hidden.config
